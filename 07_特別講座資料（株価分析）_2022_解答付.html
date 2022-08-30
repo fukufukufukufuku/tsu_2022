@@ -14123,7 +14123,7 @@ a.anchor-link {
 </ul>
 </li>
 <li><code>pandas_datareader</code>を用いて、2019/6/1-2020/5/31までの日経平均株価データを取得</li>
-<li>曜日の追加: <code>day_name()</code>を使用</li>
+<li>曜日の追加: <code>データフレーム名.index.day_name()</code></li>
 <li><a href="https://stooq.com/q/?s=%5Enkx">stooqサイト</a>
 <br><br></li>
 <li>以下では、<code>df_N225</code>のデータフレームにデータを代入するものとする</li>
@@ -14713,20 +14713,6 @@ a.anchor-link {
 <p><strong>2020年4月10日から4月15日までのデータを抽出</strong></p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -14843,7 +14829,6 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="%E6%9B%9C%E6%97%A5%E3%81%94%E3%81%A8%E3%81%AE%E6%8A%BD%E5%87%BA">&#26332;&#26085;&#12372;&#12392;&#12398;&#25277;&#20986;<a class="anchor-link" href="#%E6%9B%9C%E6%97%A5%E3%81%94%E3%81%A8%E3%81%AE%E6%8A%BD%E5%87%BA">&#182;</a></h2><ul>
-<li><code>データフレーム名.index.day_name() == "曜日名(英語)"</code></li>
 <li>曜日名: Sunday（日）、Monday（月）、Tuesday（火）、Wednesday（水）、Thursday（木）、Friday（金）、Saturday（土）</li>
 </ul>
 
@@ -16780,8 +16765,7 @@ a.anchor-link {
 
 <span class="c1"># RSI計算</span>
 <span class="n">RSI</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">RSI</span><span class="p">(</span><span class="n">price</span><span class="p">,</span>           <span class="c1"># 終値</span>
-                <span class="n">timeperiod</span> <span class="o">=</span> <span class="mi">14</span>  <span class="c1"># 何日間のRSIを計算するかの日数（14日が設定されることが多い）</span>
-               <span class="p">)</span>
+                <span class="n">timeperiod</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span> <span class="c1"># 何日間のRSIを計算するかの日数（14日が設定されることが多い）</span>
 
 <span class="c1"># pandasデータフレームに追加</span>
 <span class="n">df_N225</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RSI</span> 
@@ -17272,8 +17256,8 @@ a.anchor-link {
                                  <span class="n">timeperiod</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>  <span class="c1"># 移動平均日数(平均と標準偏差を計算するための日数)</span>
                                  <span class="n">nbdevup</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>      <span class="c1"># 上限をσ(標準偏差)の何倍にするか</span>
                                  <span class="n">nbdevdn</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>      <span class="c1"># 下限をσ(標準偏差)の何倍にするか</span>
-                                 <span class="n">matype</span>  <span class="o">=</span> <span class="mi">0</span>       <span class="c1"># 単純移動平均</span>
-                                <span class="p">)</span>
+                                 <span class="n">matype</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># 単純移動平均</span>
+                                
 <span class="c1"># pandasデータフレームに追加</span>
 <span class="n">df_N225</span><span class="p">[</span><span class="s1">&#39;upper&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">upper</span>
 <span class="n">df_N225</span><span class="p">[</span><span class="s1">&#39;middle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">middle</span>
@@ -17778,7 +17762,7 @@ a.anchor-link {
 <li>使用ライブラリ：<code>prophet</code></li>
 <li>データフレームではデータの変数名を以下のように設定<ul>
 <li>Prophetで扱う時間データ: <code>ds</code></li>
-<li>日経平均株価の調整済み終値(Adj Close): <code>y</code></li>
+<li>日経平均株価の終値(Close): <code>y</code></li>
 </ul>
 </li>
 </ul>
